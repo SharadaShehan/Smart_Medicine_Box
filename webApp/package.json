@@ -1,0 +1,15 @@
+{
+  "name": "node-red-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sharada Weerasinghe",
+  "license": "ISC",
+  "dependencies": {
+    "node-red-dashboard": "^3.6.5"
+  }
+}
