@@ -5,9 +5,8 @@ FROM node:20.10.0-alpine as build
 # Set the working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json
+# Copy the package.json file
 COPY package.json .
-COPY package-lock.json .
 
 # Install the dependencies
 RUN npm install
