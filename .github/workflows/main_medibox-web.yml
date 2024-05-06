@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://noderedwebappreg.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_1da9c9bab4bc4f19a7aaa8553c7a46ef }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_a4c51a68003a40c9b3283f99f6931fcf }}
+        registry: https://mediboxartifacts.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_8a0efb5ccfb3453e93061b8873d65e85 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_dfd511c5755e4f44917ef888ea2a8fbb }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: noderedwebappreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1da9c9bab4bc4f19a7aaa8553c7a46ef }}/node-red-web-app:${{ github.sha }}
+        tags: mediboxartifacts.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8a0efb5ccfb3453e93061b8873d65e85 }}/node-red-web-app:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'medibox-web'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b7a87acc67a64da29431edcc28e49085 }}
-        images: 'noderedwebappreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1da9c9bab4bc4f19a7aaa8553c7a46ef }}/node-red-web-app:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6bd60081b75a4301b9e0b6cbd2eb5327 }}
+        images: 'mediboxartifacts.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8a0efb5ccfb3453e93061b8873d65e85 }}/node-red-web-app:${{ github.sha }}'
