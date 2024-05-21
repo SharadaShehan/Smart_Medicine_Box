@@ -13,8 +13,8 @@
 // Define MQTT topics
 #define TEMPERATURE_TOPIC "temperature"
 #define HUMIDITY_TOPIC "humidity"
-#define ALARM_ON_TOPIC "is-alarm-on-from-medibox"   // medibox-210690B-alarm-on
-#define ALARM_ON_GET_TOPIC "is-alarm-on-from-dashboard"   // medibox-210690B-alarm-on-get
+#define ALARM_ON_TOPIC "is-alarm-on-from-medibox"
+#define ALARM_ON_GET_TOPIC "is-alarm-on-from-dashboard"
 #define ALARM_1_TIME_TOPIC "alarm-1-time-from-medibox"
 #define ALARM_2_TIME_TOPIC "alarm-2-time-from-medibox"
 #define ALARM_3_TIME_TOPIC "alarm-3-time-from-medibox"
