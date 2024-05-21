@@ -6,13 +6,13 @@ FROM node:20.10.0-alpine as build
 WORKDIR /app
 
 # Copy the package.json file
-COPY package.json .
+COPY web_app/package.json .
 
 # Install the dependencies
 RUN npm install
 
 # Copy the rest of the files
-COPY . .
+COPY web_app/ .
 
 # Replace settings.js with the one in the repository
 RUN cp /app/settings.js /app/node_modules/node-red/settings.js
