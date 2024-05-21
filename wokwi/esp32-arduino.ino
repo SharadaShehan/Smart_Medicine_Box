@@ -7,8 +7,10 @@
 #include <Adafruit_SSD1306.h> // For the OLED display
 #include <DHTesp.h> // For the DHT sensor
 #include <WiFi.h> // For the WiFi communication
+#include <WiFiClientSecure.h> // For the secure WiFi communication
 #include <PubSubClient.h> // For the MQTT communication
 #include <ESP32Servo.h> // For the servo motor
+#include "iot_configs.h" // For external configurations
 
 // Define constants for the OLED display
 #define SCREEN_WIDTH 128
@@ -28,25 +30,10 @@
 #define LDR_RIGHT 34
 #define LDR_LEFT 35
 
-// Define MQTT topics
-#define TEMPERATURE_TOPIC "medibox-210690B-temperature"
-#define HUMIDITY_TOPIC "medibox-210690B-humidity"
-#define ALARM_ON_TOPIC "medibox-210690B-alarm-on"
-#define ALARM_ON_GET_TOPIC "medibox-210690B-alarm-on-get"
-#define ALARM_1_TIME_TOPIC "medibox-210690B-alarm-1-time"
-#define ALARM_2_TIME_TOPIC "medibox-210690B-alarm-2-time"
-#define ALARM_3_TIME_TOPIC "medibox-210690B-alarm-3-time"
-#define ALARM_1_TIME_GET_TOPIC "medibox-210690B-alarm-1-time-get"
-#define ALARM_2_TIME_GET_TOPIC "medibox-210690B-alarm-2-time-get"
-#define ALARM_3_TIME_GET_TOPIC "medibox-210690B-alarm-3-time-get"
-#define LIGHT_LEFT_TOPIC "medibox-210690B-light-left"
-#define LIGHT_RIGHT_TOPIC "medibox-210690B-light-right"
-#define MOTOR_ANGLE_TOPIC "medibox-210690B-motor-angle"
-
 // Create an instances of the required libraries
 DHTesp dht; // DHT sensor
 Servo servo;  // Servo motor
-WiFiClient espClient;  // WiFi client
+WiFiClientSecure espClient;  // WiFi client
 PubSubClient mqttClient(espClient); // MQTT client
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET); // OLED display
 
@@ -101,8 +88,9 @@ void setup() {
   display.display();
   delay(2000);
 
+  WiFi.mode(WIFI_STA);
   // Connect to the WiFi network
-  WiFi.begin("Wokwi-GUEST", "", 6); // Change the SSID and password to your WiFi network
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD, WIFI_CHANNEL); // Connect to the WiFi network
   // Loop and display waiting message until the WiFi network is connected
   while (WiFi.status() != WL_CONNECTED) {
     delay(250);
@@ -157,7 +145,8 @@ void loop() {
 
 // Function to setup the MQTT communication
 void setupMqtt() {
-  mqttClient.setServer("test.mosquitto.org", 1883); // Set the MQTT broker (host, port)
+  espClient.setCACert(root_ca); // Configure the TLS/SSL client certificates
+  mqttClient.setServer(MQTT_SERVER, MQTT_PORT);  // Set the MQTT server
   mqttClient.setCallback(receiveCallback);  // Set the callback function for receiving messages
 }
 
@@ -168,7 +157,7 @@ void connectToBroker() {
   while (!mqttClient.connected()) {
     Serial.print("Attempting MQTT connection....");
 
-    if (mqttClient.connect("ESP-6783-876345267")) { // "ESP-6783-876345267" is the client ID
+    if (mqttClient.connect("ESP-6783-876345267", MQTT_USER, MQTT_PASSWORD)) { // "ESP-6783-876345267" is the client ID
       // Successfully connected to the MQTT broker
       Serial.println("connected to MQTT broker");
       // Subscribe to the MQTT topics
