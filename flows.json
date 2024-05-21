@@ -198,7 +198,7 @@
         "ca": "",
         "certname": "",
         "keyname": "",
-        "caname": "isrgrootx1.pem",
+        "caname": "./isrgrootx1.pem",
         "servername": "",
         "verifyservercert": true,
         "alpnprotocol": ""
