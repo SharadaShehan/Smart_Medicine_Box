@@ -1,7 +1,9 @@
 # Medibox
 
 ### development
-
+```
+cd web_app
+```
 ```
 npm install
 ```
