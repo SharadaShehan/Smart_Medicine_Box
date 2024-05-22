@@ -1924,7 +1924,7 @@
         "type": "function",
         "z": "401e3b9f05284c7f",
         "name": "Return Formatted Medicines list",
-        "func": "let medicines = global.get(\"medicines\");\n\nif (!Array.isArray(medicines)) {\n    medicines = [];\n    medicines.unshift({ \"Custom\": {\"medicine_name\": \"Custom\"}});\n    medicines.unshift({ \"New Medicine\": { \"medicine_name\": \"New\" }});\n    global.set(\"medicines\", medicines);\n}\n\nlet convertedMedicines = medicines.map(obj => {\n    return { [Object.keys(obj)[0]]: Object.values(obj)[0][\"medicine_name\"] };\n});\n\nmsg.options = convertedMedicines;\n\nreturn msg;",
+        "func": "let medicines = global.get(\"medicines\");\n\nif (!Array.isArray(medicines)) {\n    medicines = msg.medicines;\n    global.set(\"medicines\", medicines);\n}\n\nlet convertedMedicines = medicines.map(obj => {\n    return { [Object.keys(obj)[0]]: Object.values(obj)[0][\"medicine_name\"] };\n});\n\nmsg.options = convertedMedicines;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1947,10 +1947,6 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -1958,13 +1954,13 @@
         "once": true,
         "onceDelay": "0",
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 880,
+        "payload": "{\"tableName\":\"medicines\",\"action\":\"Q\",\"selectdata\":\"*\",\"fromcolumn\":\"type\",\"where\":\"custom medicine\",\"top\":0}",
+        "payloadType": "json",
+        "x": 140,
+        "y": 960,
         "wires": [
             [
-                "f59e4d0613d2339b"
+                "611f815a8bf0ddfd"
             ]
         ]
     },
@@ -2159,8 +2155,8 @@
         "type": "function",
         "z": "401e3b9f05284c7f",
         "name": "Add New Medicine",
-        "func": "let medicines = global.get(\"medicines\");\n\nif (!Array.isArray(medicines)) {\n    medicines = [{ \"Custom\": { \"medicine_name\": \"Custom\" } }, { \"New Medicine\": { \"medicine_name\": \"New\" } }];\n}\n\n\nlet medicine_name = msg.payload.name;\nlet minimum_angle = msg.payload.minimum_angle;\nlet controlling_factor = msg.payload.controlling_factor;\n\nif (minimum_angle < 0 || minimum_angle > 120 || controlling_factor < 0 || controlling_factor > 1) {\n    return { \"payload\": false };\n}\n\nvar new_medicine = {};\nnew_medicine[medicine_name] = {\n    \"medicine_name\": medicine_name,\n    \"minimum_angle\": minimum_angle,\n    \"controlling_factor\": controlling_factor\n}\nmedicines.unshift(new_medicine);\nglobal.set(\"medicines\", medicines);\n\nreturn { \"payload\": true };\n",
-        "outputs": 1,
+        "func": "let medicines = global.get(\"medicines\");\n\nif (!Array.isArray(medicines)) {\n    medicines = [{ \"Custom\": { \"medicine_name\": \"Custom\" } }, { \"New Medicine\": { \"medicine_name\": \"New\" } }];\n}\n\nlet medicine_name = msg.payload.name;\nlet minimum_angle = msg.payload.minimum_angle;\nlet controlling_factor = msg.payload.controlling_factor;\n\nif (minimum_angle < 0 || minimum_angle > 120 || controlling_factor < 0 || controlling_factor > 1) {\n    return [\n        { \"payload\": false },\n        { \"payload\": {\n            status: false\n        }\n    }];\n}\n\nvar new_medicine = {};\nnew_medicine[medicine_name] = {\n    \"medicine_name\": medicine_name,\n    \"minimum_angle\": minimum_angle,\n    \"controlling_factor\": controlling_factor\n}\nmedicines.unshift(new_medicine);\nglobal.set(\"medicines\", medicines);\n\nreturn [\n    { \"payload\": true },\n    { \"payload\": {\n        status: true,\n        details: new_medicine[medicine_name]\n    }\n}];\n",
+        "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
@@ -2171,6 +2167,9 @@
         "wires": [
             [
                 "c7a570c7f12ae8c1"
+            ],
+            [
+                "35f5d6dbc19928cf"
             ]
         ]
     },
@@ -2801,7 +2800,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 140,
+        "x": 160,
         "y": 1040,
         "wires": [
             [
@@ -2821,7 +2820,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
+        "x": 420,
         "y": 1040,
         "wires": [
             [
@@ -2848,7 +2847,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 680,
+        "x": 700,
         "y": 1040,
         "wires": [
             []
@@ -2871,5 +2870,87 @@
         "x": 1170,
         "y": 1100,
         "wires": []
+    },
+    {
+        "id": "f03a321eebb193ab",
+        "type": "Aleph Table Storage",
+        "z": "401e3b9f05284c7f",
+        "name": "Azure Table Storage",
+        "debug": true,
+        "x": 420,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "611f815a8bf0ddfd",
+        "type": "Aleph Table Storage",
+        "z": "401e3b9f05284c7f",
+        "name": "Azure Table Storage",
+        "debug": true,
+        "x": 420,
+        "y": 960,
+        "wires": [
+            [
+                "d4ebff9a2a3d2052"
+            ]
+        ]
+    },
+    {
+        "id": "d4ebff9a2a3d2052",
+        "type": "json",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 960,
+        "wires": [
+            [
+                "f5120bcc917af6b3"
+            ]
+        ]
+    },
+    {
+        "id": "f5120bcc917af6b3",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "function 4",
+        "func": "const queried_array = msg.payload;\nlet medicines = [];\n\nmedicines.unshift({ \"Custom\": {\"medicine_name\": \"Custom\"}});\nmedicines.unshift({ \"New Medicine\": { \"medicine_name\": \"New\" }});\n\nfor (let index = 0; index < queried_array.length; index++) {\n    const element = queried_array[index];\n    const element_name = element.RowKey._;\n    medicines.unshift({\n        [element_name] : {\n            \"medicine_name\": element.medicine_name._,\n            \"minimum_angle\": element.minimum_angle._,\n            \"controlling_factor\": element.controlling_factor._\n        }\n    });\n}\n\nreturn { medicines: medicines };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 100,
+        "y": 880,
+        "wires": [
+            [
+                "f59e4d0613d2339b"
+            ]
+        ]
+    },
+    {
+        "id": "35f5d6dbc19928cf",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "function 5",
+        "func": "const status = msg.payload.status;\nconst medicine_details = msg.payload.details;\n\nif (status) {\n    const tableInsertion = {\n        \"tableName\": \"medicines\",\n        \"action\": \"I\",\n        \"partitionKey\": \"medicine\",\n        \"rowKey\": medicine_details.medicine_name,\n        \"data\": {\n            \"medicine_name\": medicine_details.medicine_name,\n            \"minimum_angle\": medicine_details.minimum_angle,\n            \"controlling_factor\": medicine_details.controlling_factor,\n            \"type\": \"custom medicine\"\n        }\n    };\n    return { payload: tableInsertion };\n}\nelse {\n   return { payload: null };\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 760,
+        "wires": [
+            [
+                "f03a321eebb193ab"
+            ]
+        ]
     }
 ]
