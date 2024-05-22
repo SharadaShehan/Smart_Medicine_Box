@@ -24,6 +24,8 @@
 #define LIGHT_LEFT_TOPIC "light-intensity-left-ldr"
 #define LIGHT_RIGHT_TOPIC "light-intensity-right-ldr"
 #define MOTOR_ANGLE_TOPIC "motor-angle"
+#define ALARM_RINGING_TOPIC "alarm-ringing"
+#define STOP_ALARM_GET_TOPIC "stop-alarm-from-dashboard"
 
 // Define the root CA certificate for the secure MQTT communication
 extern const char *root_ca PROGMEM = R"EOF(

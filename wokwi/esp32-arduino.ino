@@ -55,6 +55,7 @@ const int alarmCount = 3;  // Number of alarms that can be set
 int alarmTimes[alarmCount][2] = {{0, 1}, {1, 0}, {2, 0}}; // Alarm times in hours and minutes
 int currentAlarmOption = 0; // Current selected alarm option
 bool alarmRingingFinished[alarmCount] = {false, false, false}; // Alarm ringing status
+bool stopRingingFromDashboard = false; // Stop alarm from the dashboard
 // Variables to configure the menu
 const int menuOptionCount = 3;  // Number of menu options
 String menuOptions[menuOptionCount] = {"Set Time Zone", "Set Alarm", "Enable/Disable Alarms"}; // Menu options
@@ -105,6 +106,9 @@ void setup() {
   setupMqtt();  // Setup the MQTT communication
   updateTime();  // Update initial time (program start time) from the NTP server
 
+  // Connect to the MQTT broker at the start
+  connectToBrokerInitial();
+
   display.display();
   delay(2000);
 
@@ -150,9 +154,8 @@ void setupMqtt() {
   mqttClient.setCallback(receiveCallback);  // Set the callback function for receiving messages
 }
 
-
-// Function to connect to the MQTT broker
-void connectToBroker() {
+// Function to connect to the MQTT broker at the start
+void connectToBrokerInitial() {
   // Loop until connected to the MQTT broker
   while (!mqttClient.connected()) {
     Serial.print("Attempting MQTT connection....");
@@ -166,6 +169,7 @@ void connectToBroker() {
       mqttClient.subscribe(ALARM_2_TIME_GET_TOPIC);
       mqttClient.subscribe(ALARM_3_TIME_GET_TOPIC);
       mqttClient.subscribe(MOTOR_ANGLE_TOPIC);
+      mqttClient.subscribe(STOP_ALARM_GET_TOPIC);
 
       // Publish initial configuration to the MQTT broker
       // Alarms enabled/disabled
@@ -181,6 +185,33 @@ void connectToBroker() {
       mqttClient.publish(ALARM_2_TIME_TOPIC, timeInMillisStr);
       sprintf(timeInMillisStr, "%d", alarmTimeToMillis(alarmTimes[2][0], alarmTimes[2][1]));
       mqttClient.publish(ALARM_3_TIME_TOPIC, timeInMillisStr);
+    }
+    else {
+      // Failed to connect to the MQTT broker
+      Serial.print("failed, rc=");
+      Serial.print(mqttClient.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+    }
+  }
+}
+
+// Function to connect to the MQTT broker after disconnection
+void connectToBroker() {
+  // Loop until connected to the MQTT broker
+  while (!mqttClient.connected()) {
+    Serial.print("Attempting MQTT connection....");
+
+    if (mqttClient.connect("ESP-6783-876345267", MQTT_USER, MQTT_PASSWORD)) { // "ESP-6783-876345267" is the client ID
+      // Successfully connected to the MQTT broker
+      Serial.println("connected to MQTT broker");
+      // Subscribe to the MQTT topics
+      mqttClient.subscribe(ALARM_ON_GET_TOPIC);
+      mqttClient.subscribe(ALARM_1_TIME_GET_TOPIC);
+      mqttClient.subscribe(ALARM_2_TIME_GET_TOPIC);
+      mqttClient.subscribe(ALARM_3_TIME_GET_TOPIC);
+      mqttClient.subscribe(MOTOR_ANGLE_TOPIC);
+      mqttClient.subscribe(STOP_ALARM_GET_TOPIC);
     }
     else {
       // Failed to connect to the MQTT broker
@@ -235,6 +266,11 @@ void receiveCallback(char* topic, byte* payload, unsigned int length) {
   // Check if the received message is to update the motor angle
   else if (strcmp(topic, MOTOR_ANGLE_TOPIC) == 0)
     servo.write(atoi((char*)payload));  // Update the motor angle
+  // Check if the received message is to stop the alarm
+  else if (strcmp(topic, STOP_ALARM_GET_TOPIC) == 0) {
+    // Stop the alarm
+    stopRingingFromDashboard = true;
+  }
 }
 
 
@@ -640,7 +676,7 @@ void ringAlarm(int alarmIndex) {
   while (!alarmRingingFinished[alarmIndex]) {
     for (int j = 0; j < buzzerToneCount; j++) {
       // Check if the user has stopped the alarm
-      if (digitalRead(CANCEL_BUTTON) == LOW) {
+      if (digitalRead(CANCEL_BUTTON) == LOW || stopRingingFromDashboard) {
         alarmRingingFinished[alarmIndex] = true; // Update ringing status to exit the loop
         digitalWrite(LED, LOW);
         break;
@@ -648,6 +684,11 @@ void ringAlarm(int alarmIndex) {
       // Ring the buzzer with different tones
       tone(BUZZER, buzzerTones[j]); delay(400);
       noTone(BUZZER); delay(2);
+      // Publish the alarm index to the MQTT broker
+      if (!mqttClient.connected())  // Connect to the MQTT broker if not connected
+          connectToBroker();
+      mqttClient.publish(ALARM_RINGING_TOPIC, String(alarmIndex+1).c_str());
+      mqttClient.loop();
     }
   }
 }
@@ -665,6 +706,7 @@ void checkAlarmReached() {
     } else {
       // After Exit from the loop in ringAlarm function, reset the alarm ringing status
       alarmRingingFinished[i] = false;
+      stopRingingFromDashboard = false;
     }
   }
 }
