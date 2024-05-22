@@ -25,7 +25,7 @@
         "tab": "1ba49d34a2957cd6",
         "order": 1,
         "disp": true,
-        "width": "10",
+        "width": 7,
         "collapse": false,
         "className": ""
     },
@@ -236,6 +236,286 @@
         "sessionExpiry": ""
     },
     {
+        "id": "86464c59f8fbb2b3",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6ab1b1327e40db40",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 3,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "a288cf87dc5cc12d",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "7fd6e54719661e63",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 5,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "0cf0197d28540d73",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "df6bcd18976d244a",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 7,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "3dd38945808acda7",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "37b5da4239126753",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 10,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7bca0f7a53d16986",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d78358586e1a2998",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 12,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "00afb5dd6d4271e1",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3a62ac3832291fab",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 14,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "b1c061df56443b2b",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "eae75c6a04609467",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 17,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "e71b62b9f8258360",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 18,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0329646203311383",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 19,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "edf82f673b7c956b",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 20,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2ad47503abbd875e",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 21,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "c53c509ef31cb5b6",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 22,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "438bf5198fad473c",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 23,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "b2f30b9cc84a556d",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 24,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8f5cbf0a3d382d4f",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 26,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7eff1c8b3933dcf5",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 27,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a26845c977bc17bc",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 28,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "09362be97fb48c5a",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 29,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "cbe135d5ddae85b9",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 30,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "eb9786b9fe795d4d",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 31,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "947043b70c25788b",
+        "type": "ui_spacer",
+        "z": "401e3b9f05284c7f",
+        "name": "spacer",
+        "group": "ae32a80a61d72eba",
+        "order": 32,
+        "width": 2,
+        "height": 1
+    },
+    {
         "id": "23ed16eaa62003b5",
         "type": "mqtt in",
         "z": "401e3b9f05284c7f",
@@ -296,7 +576,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Publish Alarm Status",
         "topic": "is-alarm-on-from-dashboard",
-        "qos": "",
+        "qos": "2",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -336,9 +616,9 @@
         "z": "401e3b9f05284c7f",
         "name": "Show Temperature",
         "group": "ae32a80a61d72eba",
-        "order": 1,
-        "width": 5,
-        "height": 4,
+        "order": 2,
+        "width": 4,
+        "height": 3,
         "gtype": "gage",
         "title": "Temperature",
         "label": "units",
@@ -386,9 +666,9 @@
         "z": "401e3b9f05284c7f",
         "name": "Show Humidity",
         "group": "ae32a80a61d72eba",
-        "order": 2,
-        "width": 5,
-        "height": 4,
+        "order": 9,
+        "width": 4,
+        "height": 3,
         "gtype": "gage",
         "title": "Humidity",
         "label": "units",
@@ -414,8 +694,8 @@
         "z": "401e3b9f05284c7f",
         "name": "Show Temperature Variation",
         "group": "ae32a80a61d72eba",
-        "order": 3,
-        "width": 5,
+        "order": 16,
+        "width": 4,
         "height": 4,
         "label": "Temperature",
         "chartType": "line",
@@ -425,7 +705,7 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "80",
+        "ymax": "60",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
@@ -458,8 +738,8 @@
         "z": "401e3b9f05284c7f",
         "name": "Show Humidity Variation",
         "group": "ae32a80a61d72eba",
-        "order": 4,
-        "width": 5,
+        "order": 25,
+        "width": 4,
         "height": 4,
         "label": "Humidity",
         "chartType": "line",
@@ -468,8 +748,8 @@
         "interpolate": "cubic",
         "nodata": "",
         "dot": false,
-        "ymin": "0",
-        "ymax": "100",
+        "ymin": "30",
+        "ymax": "90",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
@@ -567,7 +847,7 @@
         "label": "",
         "tooltip": "",
         "group": "0a28a47fef5d42d6",
-        "order": 3,
+        "order": 5,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -593,7 +873,7 @@
         "label": "",
         "tooltip": "",
         "group": "0a28a47fef5d42d6",
-        "order": 5,
+        "order": 7,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -619,7 +899,7 @@
         "label": "",
         "tooltip": "",
         "group": "0a28a47fef5d42d6",
-        "order": 7,
+        "order": 9,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -643,7 +923,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Publish Alarm 1 Time",
         "topic": "alarm-1-time-from-dashboard",
-        "qos": "",
+        "qos": "2",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -661,7 +941,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Publish Alarm 3 Time",
         "topic": "alarm-3-time-from-dashboard",
-        "qos": "",
+        "qos": "2",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -679,7 +959,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Publish Alarm 2 Time",
         "topic": "alarm-2-time-from-dashboard",
-        "qos": "",
+        "qos": "2",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -1853,7 +2133,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Publish Motor Angle",
         "topic": "motor-angle",
-        "qos": "",
+        "qos": "2",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -1967,7 +2247,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Publish Motor Angle",
         "topic": "motor-angle",
-        "qos": "",
+        "qos": "2",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -2138,7 +2418,7 @@
         "type": "ui_text",
         "z": "401e3b9f05284c7f",
         "group": "0a28a47fef5d42d6",
-        "order": 2,
+        "order": 4,
         "width": 6,
         "height": 1,
         "name": "Alarm 1 Text",
@@ -2159,7 +2439,7 @@
         "type": "ui_text",
         "z": "401e3b9f05284c7f",
         "group": "0a28a47fef5d42d6",
-        "order": 4,
+        "order": 6,
         "width": 6,
         "height": 1,
         "name": "Alarm 2 Text",
@@ -2180,7 +2460,7 @@
         "type": "ui_text",
         "z": "401e3b9f05284c7f",
         "group": "0a28a47fef5d42d6",
-        "order": 6,
+        "order": 8,
         "width": 6,
         "height": 1,
         "name": "Alarm 3 Text",
@@ -2194,6 +2474,222 @@
         "color": "#00c291",
         "x": 1350,
         "y": 340,
+        "wires": []
+    },
+    {
+        "id": "a2a6244eb314fd4e",
+        "type": "ui_button",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "group": "0a28a47fef5d42d6",
+        "order": 3,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Turn Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 700,
+        "y": 1100,
+        "wires": [
+            [
+                "32296f35d342d65a"
+            ]
+        ]
+    },
+    {
+        "id": "87b9321162328a95",
+        "type": "ui_text",
+        "z": "401e3b9f05284c7f",
+        "group": "0a28a47fef5d42d6",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": "16",
+        "color": "#737373",
+        "x": 690,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "32296f35d342d65a",
+        "type": "change",
+        "z": "401e3b9f05284c7f",
+        "name": "Disable Button",
+        "rules": [
+            {
+                "t": "set",
+                "p": "enabled",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Turn Off Alarm",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 1100,
+        "wires": [
+            [
+                "a2a6244eb314fd4e",
+                "c4c720a4550135f2"
+            ]
+        ]
+    },
+    {
+        "id": "e73d2a67bee18c54",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "function 2",
+        "func": "const now = new Date();\nconst hours = now.getHours();\nconst minutes = now.getMinutes();\nconst seconds = now.getSeconds();\nconst currentTimeInSecs = (hours * 60 * 60) + (minutes * 60) + (seconds);\nconst alarms_on = global.get(\"alarms_on\");\n\nif (!alarms_on) {\n    return [{ enabled: false }, { payload: \"Alarms are Disabled\" }]\n}\n\nif (msg.payload !== undefined && currentTimeInSecs - msg.payload.latestTime < 2) {\n        return [{ enabled: true }, {\n            payload: \"Alarm \" + msg.payload.latestAlarm + \" Ringing\"\n        }]\n}\nelse {\n    return [{ enabled: false }, {\n        payload: \"No Alarms Ringing\"\n    }]\n}\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1120,
+        "wires": [
+            [
+                "a2a6244eb314fd4e"
+            ],
+            [
+                "87b9321162328a95"
+            ]
+        ]
+    },
+    {
+        "id": "79db5c73ac3272f0",
+        "type": "inject",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "latest_alarm",
+        "payloadType": "global",
+        "x": 140,
+        "y": 1120,
+        "wires": [
+            [
+                "e73d2a67bee18c54"
+            ]
+        ]
+    },
+    {
+        "id": "87464a197be13511",
+        "type": "mqtt in",
+        "z": "401e3b9f05284c7f",
+        "name": "Receive Alarm Ringing Status",
+        "topic": "alarm-ringing",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5bd5d9ab086b9bc1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 1040,
+        "wires": [
+            [
+                "461ac07fcd5b4139"
+            ]
+        ]
+    },
+    {
+        "id": "461ac07fcd5b4139",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "function 3",
+        "func": "const now = new Date();\nconst hours = now.getHours();\nconst minutes = now.getMinutes();\nconst seconds = now.getSeconds();\nconst totalTimeInSecs = (hours * 60 * 60) + (minutes * 60) + (seconds);\n\nlet latestRinging = {\n    latestAlarm: msg.payload,\n    latestTime: totalTimeInSecs\n};\n\nreturn { payload: latestRinging };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1040,
+        "wires": [
+            [
+                "2bda9c4a605ed416"
+            ]
+        ]
+    },
+    {
+        "id": "2bda9c4a605ed416",
+        "type": "change",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "latest_alarm",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4c720a4550135f2",
+        "type": "mqtt out",
+        "z": "401e3b9f05284c7f",
+        "name": "Publish Stop Alarm",
+        "topic": "stop-alarm-from-dashboard",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5bd5d9ab086b9bc1",
+        "x": 1170,
+        "y": 1100,
         "wires": []
     }
 ]
