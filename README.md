@@ -56,10 +56,11 @@ Save the changes and deploy the flow. Stop the Node-RED server by pressing Ctrl+
     ```
     docker build -t {azure-container-registry-name}.azurecr.io/node-red-web-app .
     ```
-You can use below command to run the docker image locally to test the application:
+    You can use below command to run the docker image locally to test the application:
     
-    docker run -p 1880:1880 --name node-red-web-app {azure-container-registry-name}.azurecr.io/node-red-web-app
-    
+    ```
+    docker run -p 1880:1880 --name node-red-web-app     
+    ```
 
 16) Push the Docker image to the Azure Container Registry by running the following command in the terminal:
     ```
