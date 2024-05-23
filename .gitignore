@@ -4,3 +4,4 @@ node_modules/
 
 # flows backup
 .flows*
+web_app/.env
