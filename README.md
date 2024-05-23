@@ -1,5 +1,7 @@
 # Medibox
 
+## Deployment Guide
+
 1) Navigate to the embedded_program folder in the repository.
 
 2) Create a HiveMQ account and a Cluster. Create a username and password with read/write access to the cluster. Replace the environment variables under MQTT Broker settings in the iot_configs.h file with the credentials.
