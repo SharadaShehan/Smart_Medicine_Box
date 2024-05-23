@@ -15,7 +15,7 @@
 6) Navigate to the web_app folder in the repository.
 
 7) Create a .env file in the web_app folder and add the following environment variables (only for local development, for production deployment, these environment variables should be set in the azure webapp's environment variables settings):
-    ```bash
+    ```
     twilioAccountSid='your-twilio-account-sid'
     twilioAuthToken='your-twilio-auth-token'
     twilioFromPhoneNumber='your-phone-number-to-send-sms-from'
@@ -23,17 +23,17 @@
     ```
 
 8) In settings.js file in the web_app folder, replace the values of 'user' and 'pass' under 'httpNodeAuth' with the username and password you want to use to access the Node-RED Dashboard. Make sure to hash the password using bcrypt. You can use the following script in the web_app folder to generate the hash:
-    ```bash
+    ```
     node generate_hash.js
     ```
 
 9) Install the required dependencies by running the following command in the terminal:
-    ```bash
+    ```
     npm install
     ```
 
 10) Start the Node-RED server locally by running the following command in the terminal:
-    ```bash
+    ```
     npm start
     ```
 
@@ -44,25 +44,25 @@ Save the changes and deploy the flow. Stop the Node-RED server by pressing Ctrl+
 12) Navigate to .node-red folder in the home directory of the user and copy '.config.runtime.json' and 'flows_cred.json' files to the web_app folder in the repository (replace the existing files).
 
 13) Install Azure CLI and login to your Azure account by running the following command in the terminal:
-    ```bash
+    ```
     az login
     ```
 14) Create a container registry in Azure and login to the container registry by running the following command in the terminal:
-    ```bash
+    ```
     az acr login --name {azure-container-registry-name}
     ```
 
 15) Navigate to root directory of the repository. Build the Docker image by running the following command in the terminal:
-    ```bash
+    ```
     docker build -t {azure-container-registry-name}.azurecr.io/node-red-web-app .
     ```
-You can use below command to run the docker image locally
-    ```bash
+You can use below command to run the docker image locally to test the application:
+    
     docker run -p 1880:1880 --name node-red-web-app {azure-container-registry-name}.azurecr.io/node-red-web-app
-    ```
+    
 
 16) Push the Docker image to the Azure Container Registry by running the following command in the terminal:
-    ```bash
+    ```
     docker push {azure-container-registry-name}.azurecr.io/node-red-web-app
     ```
 
