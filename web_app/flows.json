@@ -1911,7 +1911,7 @@
         "topic": "payload",
         "topicType": "msg",
         "className": "",
-        "x": 670,
+        "x": 690,
         "y": 880,
         "wires": [
             [
@@ -1931,7 +1931,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
+        "x": 430,
         "y": 880,
         "wires": [
             [
@@ -1943,7 +1943,7 @@
         "id": "a16bb9c4111418bb",
         "type": "inject",
         "z": "401e3b9f05284c7f",
-        "name": "Trigger at Deployment",
+        "name": "Query to Retrieve Medicines from Azure Table at Start",
         "props": [
             {
                 "p": "payload"
@@ -1956,7 +1956,7 @@
         "topic": "",
         "payload": "{\"tableName\":\"medicines\",\"action\":\"Q\",\"selectdata\":\"*\",\"fromcolumn\":\"type\",\"where\":\"custom medicine\",\"top\":0}",
         "payloadType": "json",
-        "x": 140,
+        "x": 220,
         "y": 960,
         "wires": [
             [
@@ -1989,7 +1989,7 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 930,
+        "x": 950,
         "y": 880,
         "wires": [
             [
@@ -2191,7 +2191,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 750,
+        "x": 770,
         "y": 680,
         "wires": [
             [
@@ -2263,7 +2263,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1260,
+        "x": 1280,
         "y": 960,
         "wires": [
             [
@@ -2384,7 +2384,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1560,
+        "x": 1580,
         "y": 940,
         "wires": [
             [
@@ -2411,7 +2411,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1800,
+        "x": 1820,
         "y": 940,
         "wires": [
             [
@@ -2434,7 +2434,7 @@
         "correl": "",
         "expiry": "",
         "broker": "5bd5d9ab086b9bc1",
-        "x": 2040,
+        "x": 2060,
         "y": 900,
         "wires": []
     },
@@ -2511,7 +2511,7 @@
         "seg2": "180",
         "diff": false,
         "className": "",
-        "x": 2030,
+        "x": 2050,
         "y": 960,
         "wires": []
     },
@@ -2539,7 +2539,7 @@
         "seg2": "120",
         "diff": false,
         "className": "",
-        "x": 1580,
+        "x": 1600,
         "y": 980,
         "wires": []
     },
@@ -2567,7 +2567,7 @@
         "seg2": "1",
         "diff": false,
         "className": "",
-        "x": 1590,
+        "x": 1610,
         "y": 1020,
         "wires": []
     },
@@ -2588,7 +2588,7 @@
         "font": "",
         "fontSize": "20",
         "color": "#00c291",
-        "x": 1580,
+        "x": 1600,
         "y": 900,
         "wires": []
     },
@@ -2659,7 +2659,7 @@
         "id": "a2a6244eb314fd4e",
         "type": "ui_button",
         "z": "401e3b9f05284c7f",
-        "name": "",
+        "name": "Alarm Turn Off Button",
         "group": "0a28a47fef5d42d6",
         "order": 3,
         "width": 2,
@@ -2675,8 +2675,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 700,
-        "y": 1100,
+        "x": 960,
+        "y": 1140,
         "wires": [
             [
                 "32296f35d342d65a"
@@ -2692,7 +2692,7 @@
         "width": 4,
         "height": 1,
         "name": "",
-        "label": "",
+        "label": "Show Alarms Ringing Status",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
@@ -2700,8 +2700,8 @@
         "font": "",
         "fontSize": "16",
         "color": "#737373",
-        "x": 690,
-        "y": 1160,
+        "x": 980,
+        "y": 1200,
         "wires": []
     },
     {
@@ -2730,8 +2730,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 900,
-        "y": 1100,
+        "x": 1220,
+        "y": 1140,
         "wires": [
             [
                 "a2a6244eb314fd4e",
@@ -2743,22 +2743,25 @@
         "id": "e73d2a67bee18c54",
         "type": "function",
         "z": "401e3b9f05284c7f",
-        "name": "function 2",
-        "func": "const now = new Date();\nconst hours = now.getHours();\nconst minutes = now.getMinutes();\nconst seconds = now.getSeconds();\nconst currentTimeInSecs = (hours * 60 * 60) + (minutes * 60) + (seconds);\nconst alarms_on = global.get(\"alarms_on\");\n\nif (!alarms_on) {\n    return [{ enabled: false }, { payload: \"Alarms are Disabled\" }]\n}\n\nif (msg.payload !== undefined && currentTimeInSecs - msg.payload.latestTime < 2) {\n        return [{ enabled: true }, {\n            payload: \"Alarm \" + msg.payload.latestAlarm + \" Ringing\"\n        }]\n}\nelse {\n    return [{ enabled: false }, {\n        payload: \"No Alarms Ringing\"\n    }]\n}\n",
-        "outputs": 2,
+        "name": "Check if Alarms are Disabled/Ringing/Not-Ringing",
+        "func": "const now = new Date();\nconst hours = now.getHours();\nconst minutes = now.getMinutes();\nconst seconds = now.getSeconds();\nconst currentTimeInSecs = (hours * 60 * 60) + (minutes * 60) + (seconds);\nconst alarms_on = global.get(\"alarms_on\");\nlet alarm_time_count = global.get(\"alarm_time_count\");\n\nif (alarm_time_count === undefined) alarm_time_count = 0;\n\nif (!alarms_on) {\n    return [{ enabled: false }, { payload: \"Alarms are Disabled\" }, { alarm_time_count: alarm_time_count }]\n}\n\nif (msg.payload !== undefined && currentTimeInSecs - msg.payload.latestTime < 2) {\n    global.set(\"alarm_time_count\", alarm_time_count + 1);\n    return [{ enabled: true }, {\n        payload: \"Alarm \" + msg.payload.latestAlarm + \" Ringing\"\n    }, { alarm_time_count: alarm_time_count }]\n}\nelse {\n    if (alarm_time_count > 0){\n        global.set(\"alarm_time_count\", 0);\n    }\n    return [{ enabled: false }, {\n        payload: \"No Alarms Ringing\"\n    }, { alarm_time_count: alarm_time_count }]\n}\n",
+        "outputs": 3,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 1120,
+        "x": 570,
+        "y": 1180,
         "wires": [
             [
                 "a2a6244eb314fd4e"
             ],
             [
                 "87b9321162328a95"
+            ],
+            [
+                "c64fb7eb52a1db7f"
             ]
         ]
     },
@@ -2766,7 +2769,7 @@
         "id": "79db5c73ac3272f0",
         "type": "inject",
         "z": "401e3b9f05284c7f",
-        "name": "",
+        "name": "Repeatedly Check Alarm Ringing",
         "props": [
             {
                 "p": "payload"
@@ -2779,8 +2782,8 @@
         "topic": "",
         "payload": "latest_alarm",
         "payloadType": "global",
-        "x": 140,
-        "y": 1120,
+        "x": 160,
+        "y": 1180,
         "wires": [
             [
                 "e73d2a67bee18c54"
@@ -2800,8 +2803,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
-        "y": 1040,
+        "x": 140,
+        "y": 1060,
         "wires": [
             [
                 "461ac07fcd5b4139"
@@ -2812,7 +2815,7 @@
         "id": "461ac07fcd5b4139",
         "type": "function",
         "z": "401e3b9f05284c7f",
-        "name": "function 3",
+        "name": "Find Latest Ringed Alarm and Time",
         "func": "const now = new Date();\nconst hours = now.getHours();\nconst minutes = now.getMinutes();\nconst seconds = now.getSeconds();\nconst totalTimeInSecs = (hours * 60 * 60) + (minutes * 60) + (seconds);\n\nlet latestRinging = {\n    latestAlarm: msg.payload,\n    latestTime: totalTimeInSecs\n};\n\nreturn { payload: latestRinging };\n",
         "outputs": 1,
         "timeout": 0,
@@ -2820,8 +2823,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1040,
+        "x": 480,
+        "y": 1060,
         "wires": [
             [
                 "2bda9c4a605ed416"
@@ -2832,7 +2835,7 @@
         "id": "2bda9c4a605ed416",
         "type": "change",
         "z": "401e3b9f05284c7f",
-        "name": "",
+        "name": "Set Find Latest Ringed Alarm Details",
         "rules": [
             {
                 "t": "set",
@@ -2847,8 +2850,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 700,
-        "y": 1040,
+        "x": 850,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -2867,8 +2870,8 @@
         "correl": "",
         "expiry": "",
         "broker": "5bd5d9ab086b9bc1",
-        "x": 1170,
-        "y": 1100,
+        "x": 1470,
+        "y": 1140,
         "wires": []
     },
     {
@@ -2877,7 +2880,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Azure Table Storage",
         "debug": true,
-        "x": 420,
+        "x": 860,
         "y": 760,
         "wires": [
             []
@@ -2889,7 +2892,7 @@
         "z": "401e3b9f05284c7f",
         "name": "Azure Table Storage",
         "debug": true,
-        "x": 420,
+        "x": 580,
         "y": 960,
         "wires": [
             [
@@ -2901,11 +2904,11 @@
         "id": "d4ebff9a2a3d2052",
         "type": "json",
         "z": "401e3b9f05284c7f",
-        "name": "",
+        "name": "Convert Query Result to JSON Array",
         "property": "payload",
         "action": "obj",
         "pretty": false,
-        "x": 650,
+        "x": 890,
         "y": 960,
         "wires": [
             [
@@ -2917,7 +2920,7 @@
         "id": "f5120bcc917af6b3",
         "type": "function",
         "z": "401e3b9f05284c7f",
-        "name": "function 4",
+        "name": "Format Medicines Array",
         "func": "const queried_array = msg.payload;\nlet medicines = [];\n\nmedicines.unshift({ \"Custom\": {\"medicine_name\": \"Custom\"}});\nmedicines.unshift({ \"New Medicine\": { \"medicine_name\": \"New\" }});\n\nfor (let index = 0; index < queried_array.length; index++) {\n    const element = queried_array[index];\n    const element_name = element.RowKey._;\n    medicines.unshift({\n        [element_name] : {\n            \"medicine_name\": element.medicine_name._,\n            \"minimum_angle\": element.minimum_angle._,\n            \"controlling_factor\": element.controlling_factor._\n        }\n    });\n}\n\nreturn { medicines: medicines };\n",
         "outputs": 1,
         "timeout": 0,
@@ -2925,7 +2928,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 100,
+        "x": 130,
         "y": 880,
         "wires": [
             [
@@ -2937,7 +2940,7 @@
         "id": "35f5d6dbc19928cf",
         "type": "function",
         "z": "401e3b9f05284c7f",
-        "name": "function 5",
+        "name": "Query to Add Medicine to Azure Table",
         "func": "const status = msg.payload.status;\nconst medicine_details = msg.payload.details;\n\nif (status) {\n    const tableInsertion = {\n        \"tableName\": \"medicines\",\n        \"action\": \"I\",\n        \"partitionKey\": \"medicine\",\n        \"rowKey\": medicine_details.medicine_name,\n        \"data\": {\n            \"medicine_name\": medicine_details.medicine_name,\n            \"minimum_angle\": medicine_details.minimum_angle,\n            \"controlling_factor\": medicine_details.controlling_factor,\n            \"type\": \"custom medicine\"\n        }\n    };\n    return { payload: tableInsertion };\n}\nelse {\n   return { payload: null };\n}\n",
         "outputs": 1,
         "timeout": 0,
@@ -2945,11 +2948,77 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 180,
+        "x": 370,
         "y": 760,
         "wires": [
             [
                 "f03a321eebb193ab"
+            ]
+        ]
+    },
+    {
+        "id": "82cd37fd7a6eddcc",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "Notify User via Twilio",
+        "func": "var env_obj = global.get('env');\n\n// Your AccountSID and Auth Token from console.twilio.com\nconst accountSid = env_obj.twilioAccountSid;\nconst authToken = env_obj.twilioAuthToken;\n\nconst client = twilio(accountSid, authToken);\n\nclient.messages\n    .create({\n        body: '🔔 Alarm is Ringing! Time for Your Medicine! 💊',\n        from: env_obj.twilioFromPhoneNumber,\n        to: env_obj.twilioToPhoneNumber\n    })\n    .then((message) => console.log(message.sid));\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "twilio",
+                "module": "twilio"
+            }
+        ],
+        "x": 1760,
+        "y": 1240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1bb68aee06079a2",
+        "type": "switch",
+        "z": "401e3b9f05284c7f",
+        "name": "If Threashold Time has Reached",
+        "property": "send_message",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1450,
+        "y": 1240,
+        "wires": [
+            [
+                "82cd37fd7a6eddcc"
+            ]
+        ]
+    },
+    {
+        "id": "c64fb7eb52a1db7f",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "Check Threshold Time has Reached to Send SMS",
+        "func": "const time_count_per_min = 60;\nconst minutes_before_notifying = 1;\nconst count_before_notifying = time_count_per_min * minutes_before_notifying;\n\nif (msg.alarm_time_count == count_before_notifying) {\n    return { send_message: true };\n}\nreturn { send_message: false };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1240,
+        "wires": [
+            [
+                "d1bb68aee06079a2"
             ]
         ]
     }
