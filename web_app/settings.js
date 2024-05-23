@@ -123,6 +123,10 @@ module.exports = {
          * See https://nodered.org/docs/security.html#generating-the-password-hash
          */
         //httpNodeAuth: {user:"user",pass:"$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN."},
+        httpNodeAuth: {
+            user: 'user',
+            pass: '$2b$10$tOMYFBns06YJvV6taZhucuLUBa4iuCGjlG9JqAlWyxHxL7nz5M966'
+        },
         //httpStaticAuth: {user:"user",pass:"$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN."},
     
     /*******************************************************************************
@@ -561,4 +565,3 @@ module.exports = {
         //    */
         //},
     }
-    
