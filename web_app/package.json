@@ -12,6 +12,7 @@
   "dependencies": {
     "node-red": "3.1.9",
     "node-red-contrib-azure-table-storage-aleph": "^0.1.8",
-    "node-red-dashboard": "^3.6.5"
+    "node-red-dashboard": "^3.6.5",
+    "twilio": "^5.0.4"
   }
 }
