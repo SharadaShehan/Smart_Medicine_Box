@@ -18,6 +18,8 @@ Menu Functionalities:
 3) Disable Alarms:
     Provides an option to disable all alarms.
 
+Either medibox menu or Node-RED dashboard can be used for the above functionalities.
+
 Time Synchronization:
 
 4) Fetch and Display Time:
@@ -26,16 +28,18 @@ Time Synchronization:
 Alarm Management:
 
 5) Alarm Indication:
-    Rings the alarm with proper indication when the set alarm times are reached. Further provides suitable indications such as turned on LED and an message on OLED.
+    Rings the alarm with proper indication when the set alarm times are reached. Further provides suitable indications such as turned on LED and an message on OLED. If user does not responds to the alarm within the predefined time, he will be notified with a message via Twilio SMS Gateway.
 6) Stop Alarm:
     Allows to use a push button to stop the ringing alarm.
 7) Disable All Alarms:
     Provides an option to disable all alarms.
 
+Both medibox and Node-RED dashboard provide the above functionalities.
+
 Environmental Monitoring:
 
 8) Monitor Temperature and Humidity:
-    Continuously monitors temperature and humidity levels, providing warnings using proper indications when either or both exceed the healthy limits (Temperature: 26°C to 32°C, Humidity: 60% to 80%).
+    Continuously monitors temperature and humidity levels, providing warnings using proper indications when either or both exceed the healthy limits (Temperature: 26°C to 32°C, Humidity: 60% to 80%). Uses gauges to display real-time temperature and humidity values, and a plot to visualize past variations on the Node-RED dashboard.
 
 Light Intensity Monitoring:
 
@@ -53,7 +57,7 @@ User Interface Enhancements:
     Allows user to adjust the minimum angle and controlling factor using sliders on the Node-RED dashboard. Provides slider controls for the minimum angle (range 0 to 120) and the controlling factor (range 0 to 1).
 
 12) Medicine-Specific Settings:
-    Includes a dropdown menu with options for commonly used medicines and a custom option. Automatically applies predefined values for the minimum angle and controlling factor based on the selected medicine. Allows manual adjustment of values when the custom option is selected.
+    Includes a dropdown menu with options for commonly used medicines and a custom option. Automatically applies predefined values for the minimum angle and controlling factor based on the selected medicine. User can add custom medicines to the list. Allows manual adjustment of values when the custom option is selected.
 
 By implementing these functionalities, the Medibox effectively assists users in managing their medication schedules, while also ensuring the safe storage of medicines through environmental monitoring and dynamic light control.
 
