@@ -3011,7 +3011,7 @@
         "type": "function",
         "z": "401e3b9f05284c7f",
         "name": "Check Threshold Time has Reached to Send SMS",
-        "func": "const time_count_per_min = 60;\nconst minutes_before_notifying = 5;\nconst count_before_notifying = time_count_per_min * minutes_before_notifying;\n\nif (msg.alarm_time_count == count_before_notifying) {\n    return { send_message: true };\n}\nreturn { send_message: false };\n",
+        "func": "const time_count_per_min = 60;\nconst minutes_before_notifying = 2;\nconst count_before_notifying = time_count_per_min * minutes_before_notifying;\n\nif (msg.alarm_time_count == count_before_notifying) {\n    return { send_message: true };\n}\nreturn { send_message: false };\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
