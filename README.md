@@ -103,6 +103,10 @@ By implementing these functionalities, the Medibox effectively assists users in 
 
 <h2 align="center"> 📸 Project Snapshots 📸 </h2>
 
+### Circuit Diagram:
+
+![sysArchi](images/CircuitDiagram.png)
+
 ### Node-RED Dashboard:
 
 Refer `dev` branch for deployment guidelines.
