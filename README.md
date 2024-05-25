@@ -63,23 +63,43 @@ By implementing these functionalities, the Medibox effectively assists users in 
 
 <h2 align="center"> 🏗️ Implementation 🏗️ </h2>
 
-### Hardware Components:
-1) ESP32 Microcontroller with WiFi
-2) OLED Display
-3) Servo Motor
-4) LDRs
-5) Push Buttons
-6) Buzzer
-7) DHT22 Sensor
-8) LEDs
+<table align="center">
+<tr>
+<th style="border-bottom-style: hidden;"><h3>Hardware Components</h3></th>
+<th style="border-bottom-style: hidden;"><h3>Software Components</h3></th>
+</tr>
+<tr>
+<td style="border-bottom-style: hidden;">1) ESP32 Microcontroller with WiFi</td>
+<td style="border-bottom-style: hidden;">1) Arduino IDE</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">2) OLED Display</td>
+<td style="border-bottom-style: hidden;">2) Node-RED</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">3) Servo Motor</td>
+<td style="border-bottom-style: hidden;">3) Docker</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">4) LDRs</td>
+<td style="border-bottom-style: hidden;">4) Twilio SMS Gateway</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">5) Push Buttons</td>
+<td style="border-bottom-style: hidden;">5) HiveMQ MQTT Broker</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">6) Buzzer</td>
+<td style="border-bottom-style: hidden;">6) Azure Cloud Platform</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">7) DHT22 Sensor</td>
+</tr>
+<tr >
+<td style="border-bottom-style: hidden;">8) LEDs</td>
+</tr>
 
-### Software Components:
-1) Arduino IDE
-2) Node-RED
-3) Docker
-4) Twilio SMS Gateway
-5) HiveMQ MQTT Broker
-6) Azure Cloud Platform
+</table>
 
 ### Implementation Details:
 
@@ -122,5 +142,5 @@ By implementing these functionalities, the Medibox effectively assists users in 
   <img src="images/humidityNotification.jpg" width="32%" />
 </p>
 
-
+<br>
 Refer `dev` branch for deployment guidelines.
