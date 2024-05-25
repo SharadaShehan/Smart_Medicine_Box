@@ -109,4 +109,18 @@ By implementing these functionalities, the Medibox effectively assists users in 
 
 ### Node-RED Dashboard:
 
+![sysArchi](images/AlarmRingingTurnOff.png)
+![sysArchi](images/NewMedicineWithPredefinedMotorAngle.png)
+![sysArchi](images/SelectASavedMedicine.png)
+![sysArchi](images/SetCustomMotorAngles.png)
+
+### Moblie Device SMS Notifications:
+
+<p float="left">
+  <img src="images/alarmNotification.jpg" width="32%" />
+  <img src="images/temperatureNotification.jpg" width="32%" /> 
+  <img src="images/humidityNotification.jpg" width="32%" />
+</p>
+
+
 Refer `dev` branch for deployment guidelines.
