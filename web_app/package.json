@@ -10,6 +10,7 @@
   "author": "Sharada Weerasinghe",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "node-red": "3.1.9",
     "node-red-contrib-azure-table-storage-aleph": "^0.1.8",
     "node-red-dashboard": "^3.6.5",
