@@ -831,8 +831,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 1020,
-        "y": 80,
+        "x": 1360,
+        "y": 60,
         "wires": [
             [
                 "95c5635bbfd2c586",
@@ -864,8 +864,8 @@
         "seg2": "80",
         "diff": false,
         "className": "",
-        "x": 1300,
-        "y": 60,
+        "x": 1620,
+        "y": 40,
         "wires": []
     },
     {
@@ -909,7 +909,9 @@
         "x": 460,
         "y": 100,
         "wires": [
-            []
+            [
+                "6b46eb47ac4de023"
+            ]
         ]
     },
     {
@@ -950,10 +952,12 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1330,
-        "y": 100,
+        "x": 1650,
+        "y": 80,
         "wires": [
-            []
+            [
+                "23fe88554356b65c"
+            ]
         ]
     },
     {
@@ -3007,7 +3011,7 @@
         "type": "function",
         "z": "401e3b9f05284c7f",
         "name": "Check Threshold Time has Reached to Send SMS",
-        "func": "const time_count_per_min = 60;\nconst minutes_before_notifying = 1;\nconst count_before_notifying = time_count_per_min * minutes_before_notifying;\n\nif (msg.alarm_time_count == count_before_notifying) {\n    return { send_message: true };\n}\nreturn { send_message: false };\n",
+        "func": "const time_count_per_min = 60;\nconst minutes_before_notifying = 5;\nconst count_before_notifying = time_count_per_min * minutes_before_notifying;\n\nif (msg.alarm_time_count == count_before_notifying) {\n    return { send_message: true };\n}\nreturn { send_message: false };\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3021,5 +3025,277 @@
                 "d1bb68aee06079a2"
             ]
         ]
+    },
+    {
+        "id": "6b46eb47ac4de023",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "function 1",
+        "func": "\nlet last_value = msg.payload[0].data.at(0).at(-1).y;\n\nreturn { value: last_value };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 100,
+        "wires": [
+            [
+                "e8678ef3d46389c7"
+            ]
+        ]
+    },
+    {
+        "id": "e8678ef3d46389c7",
+        "type": "switch",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "property": "value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "26",
+                "vt": "num",
+                "v2": "32",
+                "v2t": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 100,
+        "wires": [
+            [
+                "3bfd144b0f4c46a8"
+            ],
+            [
+                "d48e6d21ef6e538c"
+            ]
+        ]
+    },
+    {
+        "id": "23fe88554356b65c",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "function 2",
+        "func": "\nlet last_value = msg.payload[0].data.at(0).at(-1).y;\n\nreturn { value: last_value };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1860,
+        "y": 80,
+        "wires": [
+            [
+                "5c29c7a90520b89e"
+            ]
+        ]
+    },
+    {
+        "id": "5c29c7a90520b89e",
+        "type": "switch",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "property": "value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "60",
+                "vt": "num",
+                "v2": "80",
+                "v2t": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2010,
+        "y": 80,
+        "wires": [
+            [
+                "039a2bcdc812645e"
+            ],
+            [
+                "efecd4e01a53db74"
+            ]
+        ]
+    },
+    {
+        "id": "d48e6d21ef6e538c",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "Notify User via Twilio",
+        "func": "let temperature_msg_sent = global.get(\"temperature_msg_sent\");\nvar env_obj = global.get('env');\n\nif (temperature_msg_sent==undefined) {\n    temperature_msg_sent = false;\n}\n\nif (!temperature_msg_sent) {\n\n    // Your AccountSID and Auth Token from console.twilio.com\n    const accountSid = env_obj.twilioAccountSid;\n    const authToken = env_obj.twilioAuthToken;\n\n    const client = twilio(accountSid, authToken);\n\n    client.messages\n        .create({\n            body: '🌡️ Medibox temperature is not within safe limits! 🚨',\n            from: env_obj.twilioFromPhoneNumber,\n            to: env_obj.twilioToPhoneNumber\n        })\n        .then((message) => console.log(message.sid));\n\n    temperature_msg_sent = true;\n    global.set(\"temperature_msg_sent\", temperature_msg_sent);\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "twilio",
+                "module": "twilio"
+            }
+        ],
+        "x": 1040,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3bfd144b0f4c46a8",
+        "type": "change",
+        "z": "401e3b9f05284c7f",
+        "name": "Reset temperature_msg_sent status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "temperature_msg_sent",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "039a2bcdc812645e",
+        "type": "change",
+        "z": "401e3b9f05284c7f",
+        "name": "Reset humidity_msg_sent status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "humidity_msg_sent",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2250,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "efecd4e01a53db74",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "Notify User via Twilio",
+        "func": "let humidity_msg_sent = global.get(\"humidity_msg_sent\");\nvar env_obj = global.get('env');\n\nif (humidity_msg_sent==undefined) {\n    humidity_msg_sent = false;\n}\n\nif (!humidity_msg_sent) {\n\n    // Your AccountSID and Auth Token from console.twilio.com\n    const accountSid = env_obj.twilioAccountSid;\n    const authToken = env_obj.twilioAuthToken;\n\n    const client = twilio(accountSid, authToken);\n\n    client.messages\n        .create({\n            body: '🌡️ Medibox humidity is not within safe limits! 🚨',\n            from: env_obj.twilioFromPhoneNumber,\n            to: env_obj.twilioToPhoneNumber\n        })\n        .then((message) => console.log(message.sid));\n\n    humidity_msg_sent = true;\n    global.set(\"humidity_msg_sent\", humidity_msg_sent);\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "twilio",
+                "module": "twilio"
+            }
+        ],
+        "x": 2220,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1263987f6cde7ba1",
+        "type": "function",
+        "z": "401e3b9f05284c7f",
+        "name": "Notify User via Twilio",
+        "func": "let temperature_msg_sent = global.get(\"temperature_msg_sent\");\nvar env_obj = global.get('env');\n\nreturn {payload:env_obj};\n\nif (temperature_msg_sent==undefined) {\n    temperature_msg_sent = false;\n}\n\nif (!temperature_msg_sent) {\n\n    // Your AccountSID and Auth Token from console.twilio.com\n    const accountSid = env_obj.twilioAccountSid;\n    const authToken = env_obj.twilioAuthToken;\n\n    const client = twilio(accountSid, authToken);\n\n    client.messages\n        .create({\n            body: '🌡️ Medibox temperature is not within safe limits! 🚨',\n            from: env_obj.twilioFromPhoneNumber,\n            to: env_obj.twilioToPhoneNumber\n        })\n        .then((message) => console.log(message.sid));\n\n    temperature_msg_sent = true;\n    global.set(\"temperature_msg_sent\", temperature_msg_sent);\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "twilio",
+                "module": "twilio"
+            }
+        ],
+        "x": 3080,
+        "y": 160,
+        "wires": [
+            [
+                "3234c6c5a460695c"
+            ]
+        ]
+    },
+    {
+        "id": "e03c32b752af1fbb",
+        "type": "inject",
+        "z": "401e3b9f05284c7f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2880,
+        "y": 160,
+        "wires": [
+            [
+                "1263987f6cde7ba1"
+            ]
+        ]
+    },
+    {
+        "id": "3234c6c5a460695c",
+        "type": "debug",
+        "z": "401e3b9f05284c7f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3280,
+        "y": 160,
+        "wires": []
     }
 ]
