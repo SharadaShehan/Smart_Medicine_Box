@@ -72,31 +72,33 @@ By implementing these functionalities, the Medibox effectively assists users in 
 <td style="border-bottom-style: hidden;">1) ESP32 Microcontroller with WiFi</td>
 <td style="border-bottom-style: hidden;">1) Arduino IDE</td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">2) OLED Display</td>
 <td style="border-bottom-style: hidden;">2) Node-RED</td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">3) Servo Motor</td>
 <td style="border-bottom-style: hidden;">3) Docker</td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">4) LDRs</td>
 <td style="border-bottom-style: hidden;">4) Twilio SMS Gateway</td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">5) Push Buttons</td>
 <td style="border-bottom-style: hidden;">5) HiveMQ MQTT Broker</td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">6) Buzzer</td>
 <td style="border-bottom-style: hidden;">6) Azure Cloud Platform</td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">7) DHT22 Sensor</td>
+<td style="border-bottom-style: hidden;"> </td>
 </tr>
-<tr >
+<tr>
 <td style="border-bottom-style: hidden;">8) LEDs</td>
+<td style="border-bottom-style: hidden;"> </td>
 </tr>
 
 </table>
